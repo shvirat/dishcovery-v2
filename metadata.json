@@ -1,0 +1,8 @@
+
+{
+  "name": "Dishcovery - AI Powered Meal Finder",
+  "description": "A modern, animated meal discovery platform featuring AI image generation and editing, meal search, favorites management, and detailed recipes.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
