@@ -12,7 +12,7 @@ This repository contains the **frontend** of Dishcovery, developed using **React
 
 ## 🚀 Live Links
 
-- 🌐 **Live Website**: https://dishcovery-ai.vercel.app  
+- 🌐 **Live Website**: https://dishcovery-v2.vercel.app  
 - ⚙️ **Backend API**: https://dishcovery-api.vercel.app  
 - 🐙 **GitHub Repository**: https://github.com/shvirat/dishcovery-v2 
 
