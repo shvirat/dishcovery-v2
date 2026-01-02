@@ -23,6 +23,8 @@ import PrivacyPage from './pages/PrivacyPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import UserProfile from './pages/UserProfile';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 // Components
 const Navbar: React.FC<{ 
@@ -277,10 +279,6 @@ export default function App() {
   const handleLogout = () => {
     authService.logout();
     setAuth({ user: null, token: null, isAuthenticated: false });
-  };
-  const handleProfileLogout = () => {
-    authService.logout();
-    setAuth({ user: null, token: null, isAuthenticated: false });
     window.location.replace("/");
   };
 
@@ -301,7 +299,10 @@ export default function App() {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/profile" element={<UserProfile auth={auth} onLogout={handleProfileLogout} onUpdateAuth={handleAuthChange}/>} />
+            <Route path="/profile" element={<UserProfile auth={auth} onLogout={handleLogout} onUpdateAuth={handleAuthChange}/>} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+
           </Routes> 
         </main>
 
