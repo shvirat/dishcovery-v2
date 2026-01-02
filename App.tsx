@@ -19,7 +19,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import AIMealLabPage from './pages/AIMealLabPage';
 import TermsPage from './pages/TermsPage';
-import PrivacyPage from './pages/Privacypage';
+import PrivacyPage from './pages/PrivacyPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import UserProfile from './pages/UserProfile';
