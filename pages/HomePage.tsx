@@ -59,15 +59,20 @@ const HomePage: React.FC = () => {
     }
   }, []);
 
+  const q = searchParams.get("q");
+  const category = searchParams.get("category");
+  const area = searchParams.get("area");
+
   const resultsTitle = isSearching
     ? "Searching..."
-    : queryParam
-      ? `Search results for "${queryParam}"`
-      : selectedCategory
-        ? `${selectedCategory} Meals`
-        : selectedArea
-          ? `${selectedArea} Cuisine`
+    : q
+      ? `Search results for "${q}"`
+      : category
+        ? `${category} Meals`
+        : area
+          ? `${area} Cuisine`
           : "Recommended for You";
+
 
   useEffect(() => {
     fetchCategories();
@@ -78,30 +83,34 @@ const HomePage: React.FC = () => {
   const category = searchParams.get("category");
   const area = searchParams.get("area");
 
+  if (!q && !category && !area) {
+    setSelectedCategory(null);
+    setSelectedArea(null);
+    setSearchQuery("");
+  }
+
   const hasFilter = Boolean(q || category || area);
   let isActive = true;
 
   const fetchMeals = async () => {
-    setIsSearching(true);
+    if (q || category || area) {
+      setIsSearching(true);
+    }
     try {
       if (q) {
         setSearchQuery(q);
-        setSelectedCategory(null);
-        setSelectedArea(null);
 
         const results = await mealDbService.searchMealsByName(q);
         if (isActive) setMeals(results);
       }
       else if (category) {
         setSelectedCategory(category);
-        setSelectedArea(null);
 
         const results = await mealDbService.getMealsByCategory(category);
         if (isActive) setMeals(results);
       }
       else if (area) {
         setSelectedArea(area);
-        setSelectedCategory(null);
 
         const results = await mealDbService.getMealsByArea(area);
         if (isActive) setMeals(results);
