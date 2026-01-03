@@ -74,48 +74,59 @@ const HomePage: React.FC = () => {
   }, [fetchCategories]);
 
   useEffect(() => {
-    if (!queryParam) {
-      fetchDefaultMeals();
-    }
-  }, [queryParam, fetchDefaultMeals]);
+  const q = searchParams.get("q");
+  const category = searchParams.get("category");
+  const area = searchParams.get("area");
 
-  useEffect(() => {
-    const q = searchParams.get("q");
-    const category = searchParams.get("category");
-    const area = searchParams.get("area");
+  const hasFilter = Boolean(q || category || area);
+  let isActive = true;
 
-    const fetch = async () => {
-      setIsSearching(true);
-      try {
-        if (q) {
-          setSearchQuery(q);
-          setSelectedCategory(null);
-          setSelectedArea(null);
-          setMeals(await mealDbService.searchMealsByName(q));
-        }
-        else if (category) {
-          setSelectedCategory(category);
-          setSelectedArea(null);
-          setMeals(await mealDbService.getMealsByCategory(category));
-        }
-        else if (area) {
-          setSelectedArea(area);
-          setSelectedCategory(null);
-          setMeals(await mealDbService.getMealsByArea(area));
-        }
-        else {
-          fetchDefaultMeals(); // reset
-          return;
-        }
+  const fetchMeals = async () => {
+    setIsSearching(true);
+    try {
+      if (q) {
+        setSearchQuery(q);
+        setSelectedCategory(null);
+        setSelectedArea(null);
 
-        scrollToResults();
-      } finally {
-        setIsSearching(false);
+        const results = await mealDbService.searchMealsByName(q);
+        if (isActive) setMeals(results);
       }
-    };
+      else if (category) {
+        setSelectedCategory(category);
+        setSelectedArea(null);
 
-    fetch();
-  }, [searchParams]);
+        const results = await mealDbService.getMealsByCategory(category);
+        if (isActive) setMeals(results);
+      }
+      else if (area) {
+        setSelectedArea(area);
+        setSelectedCategory(null);
+
+        const results = await mealDbService.getMealsByArea(area);
+        if (isActive) setMeals(results);
+      }
+      else {
+        const results = await mealDbService.searchMealsByName('');
+        if (isActive) setMeals(results.slice(0, 12));
+      }
+
+      // scroll ONLY for search/filter navigation
+      if (hasFilter) {
+        scrollToResults();
+      }
+    } finally {
+      if (isActive) setIsSearching(false);
+    }
+  };
+
+  fetchMeals();
+
+  return () => {
+    isActive = false;
+  };
+}, [searchParams]);
+
 
   const handleSearch = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
