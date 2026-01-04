@@ -99,18 +99,25 @@ const HomePage: React.FC = () => {
     try {
       if (q) {
         setSearchQuery(q);
+        setSelectedCategory(null);
+        setSelectedArea(null);
 
         const results = await mealDbService.searchMealsByName(q);
         if (isActive) setMeals(results);
       }
       else if (category) {
         setSelectedCategory(category);
+        setSelectedArea(null);
+        setSearchQuery("");
 
         const results = await mealDbService.getMealsByCategory(category);
         if (isActive) setMeals(results);
       }
       else if (area) {
         setSelectedArea(area);
+        setSelectedCategory(null);
+        setSearchQuery("");
+
 
         const results = await mealDbService.getMealsByArea(area);
         if (isActive) setMeals(results);
