@@ -249,9 +249,14 @@ const Navbar: React.FC<{
 };
 
 export default function App() {
+  const getSystemTheme = () =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? Theme.DARK
+    : Theme.LIGHT;
+
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    return (saved as Theme) || Theme.LIGHT;
+    return (saved as Theme) || getSystemTheme();
   });
 
   const [auth, setAuth] = useState<AuthState>({
