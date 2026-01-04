@@ -76,7 +76,7 @@ const LoginPage: React.FC<LoginPageProps> = ({auth, onLogin }) => {
           <div className="space-y-2">
             <div className="flex justify-between items-center ml-1">
               <label className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Password</label>
-              <a href="/forgot-password" className="text-xs font-semibold text-orange-500 hover:underline">Forgot?</a>
+              <a href="/forgot-password" tabIndex={-1} className="text-xs font-semibold text-orange-500 hover:underline">Forgot?</a>
             </div>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -90,6 +90,7 @@ const LoginPage: React.FC<LoginPageProps> = ({auth, onLogin }) => {
               />
               <button
                 type="button"
+                tabIndex={-1}
                 onClick={() => setShowPassword(prev => !prev)}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors"
               >

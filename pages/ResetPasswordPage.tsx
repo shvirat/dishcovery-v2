@@ -11,6 +11,8 @@ const ResetPasswordPage = () => {
   const token = searchParams.get("token");
 
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const passwordsMatch = password && confirmPassword && password === confirmPassword;
   const [showPassword, setShowPassword] = useState(false);
   const [status, setStatus] =
     useState<"idle" | "loading" | "success" | "error">("idle");
@@ -56,6 +58,12 @@ const ResetPasswordPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("loading");
 
     try {
@@ -133,6 +141,7 @@ const ResetPasswordPage = () => {
                   />
                   <button
                     type="button"
+                    tabIndex={-1}
                     onClick={() => setShowPassword((p) => !p)}
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors"
                   >
@@ -140,10 +149,49 @@ const ResetPasswordPage = () => {
                   </button>
                 </div>
               </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1 uppercase tracking-wider">
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <Lock
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+                    size={18}
+                  />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className={`w-full bg-slate-50 dark:bg-slate-800 border rounded-2xl py-3.5 pl-12 pr-12 text-slate-900 dark:text-white focus:outline-none focus:ring-2 transition-all
+                      ${
+                        confirmPassword && !passwordsMatch
+                          ? "border-red-400 focus:ring-red-400/20"
+                          : "border-slate-200 dark:border-slate-700 focus:ring-orange-500/20 focus:border-orange-500"
+                      }`}
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    tabIndex={-1}
+                    onClick={() => setShowPassword((p) => !p)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors"
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+
+                {/* Inline mismatch hint */}
+                {confirmPassword && !passwordsMatch && (
+                  <p className="text-xs text-red-500 ml-1 font-medium">
+                    Passwords do not match
+                  </p>
+                )}
+              </div>
 
               <button
                 type="submit"
-                disabled={status === "loading"}
+                disabled={status === "loading" || !passwordsMatch}
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition-all shadow-xl shadow-orange-500/20 disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {status === "loading" ? (

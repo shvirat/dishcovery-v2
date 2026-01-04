@@ -24,7 +24,6 @@ const SignupPage: React.FC<SignupPageProps> = ({auth, onLogin }) => {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
@@ -117,6 +116,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               />
               <button
                 type="button"
+                tabIndex={-1}
                 onClick={() => setShowPassword(prev => !prev)}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors"
               >
@@ -132,7 +132,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input
-                type={showConfirmPassword ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -141,10 +141,11 @@ const handleSubmit = async (e: React.FormEvent) => {
               />
               <button
                 type="button"
-                onClick={() => setShowConfirmPassword(prev => !prev)}
+                tabIndex={-1}
+                onClick={() => setShowPassword(prev => !prev)}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors"
               >
-                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
