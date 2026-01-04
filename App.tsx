@@ -142,7 +142,7 @@ const Navbar: React.FC<{
                     />
 
                     <span className="text-xs font-semibold text-slate-900 dark:text-white truncate max-w-[100px]">
-                      {auth.user?.name}
+                      {auth.user?.name?.trim().split(/\s+/)[0]}
                     </span>
                   </button>
                   <button
@@ -225,7 +225,7 @@ const Navbar: React.FC<{
                     >
                       <UserIcon size={20} />
                       <span className="truncate max-w-[100px]">
-                        {auth.user?.name}
+                        {auth.user?.name?.trim().split(/\s+/)[0]}
                       </span>
                     </button>
                   </div>
