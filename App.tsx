@@ -44,6 +44,7 @@ import ContactPage from "./pages/ContactPage";
 import UserProfile from "./pages/UserProfile";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 // Components
 const Navbar: React.FC<{
@@ -355,6 +356,7 @@ export default function App() {
             />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
 
