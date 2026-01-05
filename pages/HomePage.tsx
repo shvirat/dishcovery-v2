@@ -190,6 +190,9 @@ const HomePage: React.FC = () => {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+          <h1 className="sr-only">
+            Dishcovery – Discover Meals and Recipes
+          </h1>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10">
           <div className="max-w-3xl">
             <motion.div
