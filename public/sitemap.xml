@@ -3,20 +3,24 @@
   <url>
     <loc>https://dishcovery-v2.vercel.app/</loc>
     <priority>1.0</priority>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
     <loc>https://dishcovery-v2.vercel.app/login</loc>
     <priority>0.5</priority>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
     <loc>https://dishcovery-v2.vercel.app/signup</loc>
     <priority>0.5</priority>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
     <loc>https://dishcovery-v2.vercel.app/forgot-password</loc>
     <priority>0.3</priority>
+    <lastmod>2026-01-07</lastmod>
   </url>
 </urlset>
