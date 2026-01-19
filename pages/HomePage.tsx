@@ -247,23 +247,23 @@ const HomePage: React.FC = () => {
               </button>
             </motion.div>
           </div>
-        </div>
 
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 w-[40%] h-full pointer-events-none overflow-hidden hidden lg:block">
-          <motion.img
-            src="/images/dishcovery-icon.png"
-            alt=""
-            className="absolute top-[20%] left-[10%] 
-                      -translate-x-1/2 -translate-y-1/2
-                      w-[350px]"
-            animate={{ y: [-10, 10, -10] }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+          {/* Foreground Decorative Elements */}
+          <div className="absolute top-0 right-0 w-[35%] h-full pointer-events-none overflow-hidden hidden lg:block">
+            <motion.img
+              src="/images/dishcovery-icon.png"
+              alt=""
+              className="absolute top-[48%] left-[52%] 
+                        -translate-x-1/2 -translate-y-1/2
+                        w-[330px]"
+              animate={{ y: [-10, 10, -10] }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
         </div>
       </section>
 
@@ -277,7 +277,7 @@ const HomePage: React.FC = () => {
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Browse by Category</h2>
           </div>
         </div>
-        <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+        <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar fine-pointer-show-scrollbar">
           {categories.length > 0 ? categories.map((cat) => (
             <button
               key={cat.idCategory}

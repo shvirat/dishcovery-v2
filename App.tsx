@@ -85,7 +85,7 @@ const Navbar: React.FC<{
                 }
                 alt="Logo"
                 width="40px"
-                rounded-xl
+                className="rounded-lg"
               />
             </div>
             <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
