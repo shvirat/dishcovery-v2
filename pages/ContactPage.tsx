@@ -87,7 +87,7 @@ export default function ContactPage() {
           </p>
 
           <div className="pt-6 space-y-5">
-            <ContactLink icon={<Mail size={18} />} href="mailto:genpixel@yahoo.com" label="genpixel@yahoo.com" />
+            <ContactLink icon={<Mail size={18} />} href="mailto:thegenpixel@gmail.com" label="thegenpixel@gmail.com" />
             <ContactLink icon={<Phone size={18} />} href="tel:+918292091005" label="+91 82920 91005" />
             <ContactLink
               icon={<MapPin size={18} />}
