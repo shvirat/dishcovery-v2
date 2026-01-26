@@ -356,17 +356,16 @@ const MealDetailsPage: React.FC<MealDetailsPageProps> = ({ auth, setAuth }) => {
                     </a>
                   </div>
                 </div>
-<a
-  href={meal.strYoutube}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block p-4 bg-orange-50 dark:bg-orange-900/10 rounded-2xl border border-red-300 dark:border-red-900/60 text-center transition-all duration-300 hover:bg-orange-200 dark:hover:bg-orange-900/30 hover:scale-[1.03] hover:shadow-md hover:shadow-orange-500/10 active:scale-[0.98]"
->
-  <p className="text-orange-600 dark:text-orange-400 text-sm font-semibold">
-    Watch the full tutorial on YouTube
-  </p>
-</a>
-
+                <a
+                  href={meal.strYoutube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-4 bg-orange-50 dark:bg-orange-900/10 rounded-2xl border border-red-300 dark:border-red-900/60 text-center transition-all duration-300 hover:bg-orange-200 dark:hover:bg-orange-900/30 hover:scale-[1.03] hover:shadow-md hover:shadow-orange-500/10 active:scale-[0.98]"
+                >
+                  <p className="text-orange-600 dark:text-orange-400 text-sm font-semibold">
+                    Watch the full tutorial on YouTube
+                  </p>
+                </a>
               </section>
             )}
           </div>

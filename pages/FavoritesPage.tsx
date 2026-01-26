@@ -95,11 +95,11 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({ auth, setAuth }) => {
               <div className="p-5">
                 <h3 className="font-bold text-slate-900 dark:text-white truncate mb-4">{meal.strMeal}</h3>
                 <Link
-  to={`/meal/${meal.idMeal}`}
-  className="w-full py-2 flex items-center justify-center gap-2 bg-slate-50 dark:bg-slate-800 hover:bg-orange-500 dark:hover:bg-orange-500/20 hover:text-white rounded-xl text-sm font-bold transition-all duration-200 ease-out hover:scale-[1.04]"
->
-  View Details <ArrowRight size={14} />
-</Link>
+                  to={`/meal/${meal.idMeal}`}
+                  className="w-full py-2 flex items-center justify-center gap-2 bg-slate-50 dark:bg-slate-800 hover:bg-orange-500 dark:hover:bg-orange-500/20 hover:text-white rounded-xl text-sm font-bold transition-all duration-200 ease-out hover:scale-[1.04]"
+                >
+                  View Details <ArrowRight size={14} />
+                </Link>
               </div>
             </motion.div>
           ))}

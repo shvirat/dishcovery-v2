@@ -203,14 +203,14 @@ const HomePage: React.FC = () => {
               <Sparkles size={16} />
               AI-Powered Culinary Exploration
             </motion.div>
-            <motion.h1
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]"
             >
               What's on your <span className="text-orange-500">menu</span> today?
-            </motion.h1>
+            </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -252,7 +252,7 @@ const HomePage: React.FC = () => {
           <div className="absolute top-0 right-0 w-[35%] h-full pointer-events-none overflow-hidden hidden lg:block">
             <motion.img
               src="/images/dishcovery-icon.png"
-              alt=""
+              alt="Dishcovery Icon"
               className="absolute top-[48%] left-[52%] 
                         -translate-x-1/2 -translate-y-1/2
                         w-[330px]"
