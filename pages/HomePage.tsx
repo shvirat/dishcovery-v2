@@ -40,7 +40,8 @@ const HomePage: React.FC = () => {
 
   const fetchCategories = useCallback(async () => {
     try {
-      const cats = await mealDbService.getCategories();
+      const getCats = await mealDbService.getCategories();
+      const cats = [...getCats].sort((a,b) => a.strCategory.localeCompare(b.strCategory));
       setCategories(cats);
     } catch (err) {
       console.error(err);
@@ -173,7 +174,7 @@ const HomePage: React.FC = () => {
     }
   };
 
-  const ParallaxMeal = ({ src, speed }) => {
+  const ParallaxMeal = ({ src, speed }: { src: string; speed: number }) => {
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 500], [0, speed]);
 
@@ -240,7 +241,7 @@ const HomePage: React.FC = () => {
               </form>
               <button
                 onClick={handleSurpriseMe}
-                className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-900/10 dark:shadow-white/5 flex items-center justify-center gap-2 whitespace-nowrap min-h-[60px]"
+                className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-900/10 dark:shadow-white/5 flex items-center justify-center gap-2 whitespace-nowrap min-h-15"
               >
                 <Sparkles size={20} />
                 Surprise Me
@@ -255,7 +256,7 @@ const HomePage: React.FC = () => {
               alt="Dishcovery Icon"
               className="absolute top-[48%] left-[52%] 
                         -translate-x-1/2 -translate-y-1/2
-                        w-[330px]"
+                        w-82.5"
               animate={{ y: [-10, 10, -10] }}
               transition={{
                 duration: 8,
@@ -282,7 +283,7 @@ const HomePage: React.FC = () => {
             <button
               key={cat.idCategory}
               onClick={() => handleCategorySelect(cat.strCategory)}
-              className={`flex-shrink-0 group relative overflow-hidden rounded-2xl p-4 w-32 flex flex-col items-center gap-3 transition-all ${selectedCategory === cat.strCategory
+              className={`shrink-0 group relative overflow-hidden rounded-2xl p-4 w-32 flex flex-col items-center gap-3 transition-all ${selectedCategory === cat.strCategory
                   ? 'bg-orange-500 text-white'
                   : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-orange-200 dark:hover:border-orange-500/30'
                 }`}
@@ -291,7 +292,7 @@ const HomePage: React.FC = () => {
               <span className="text-xs font-bold uppercase tracking-wider text-center">{cat.strCategory}</span>
             </button>
           )) : Array.from({ length: 10 }).map((_, i) => (
-            <div key={i} className="flex-shrink-0 w-32 h-32 bg-slate-100 dark:bg-slate-800 animate-pulse rounded-2xl" />
+            <div key={i} className="shrink-0 w-32 h-32 bg-slate-100 dark:bg-slate-800 animate-pulse rounded-2xl" />
           ))}
         </div>
       </section>
@@ -338,7 +339,7 @@ const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl bg-slate-200 dark:bg-slate-800 animate-pulse" />
+                <div className="aspect-4/3 rounded-2xl bg-slate-200 dark:bg-slate-800 animate-pulse" />
                 <div className="h-6 w-3/4 bg-slate-200 dark:bg-slate-800 animate-pulse rounded-md" />
                 <div className="h-4 w-1/2 bg-slate-200 dark:bg-slate-800 animate-pulse rounded-md" />
               </div>

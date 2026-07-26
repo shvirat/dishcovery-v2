@@ -5,5 +5,5 @@ export const AUTH_STORAGE_KEY = 'dishcovery-auth';
 export const FAV_STORAGE_KEY = 'dishcovery-favorites';
 
 export const CUISINES = [
-  "American", "British", "Canadian", "Chinese", "Croatian", "Dutch", "Egyptian", "French", "Greek", "Indian", "Irish", "Italian", "Jamaican", "Japanese", "Kenyan", "Malaysian", "Mexican", "Moroccan", "Polish", "Portuguese", "Russian", "Spanish", "Thai", "Tunisian", "Turkish", "Vietnamese"
+  "Australia", "Brazil", "British", "Canadian", "Chinese", "Croatian", "Dutch", "Egyptian", "France", "Greek", "India", "Irish", "Italian", "Jamaican", "Japanese", "Kenyan", "Malaysian", "Mexican", "Moroccan", "Polish", "Portuguese", "Russian", "Spanish", "Thai", "Tunisian", "Turkish", "United States", "Vietnamese"
 ];

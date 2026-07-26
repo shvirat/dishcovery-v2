@@ -141,7 +141,7 @@ const Navbar: React.FC<{
                       className="text-slate-700 dark:text-slate-300"
                     />
 
-                    <span className="text-xs font-semibold text-slate-900 dark:text-white truncate max-w-[100px]">
+                    <span className="text-xs font-semibold text-slate-900 dark:text-white truncate max-w-25">
                       {auth.user?.name?.trim().split(/\s+/)[0]}
                     </span>
                   </button>
@@ -224,7 +224,7 @@ const Navbar: React.FC<{
                       className="flex flex-row items-center gap-1 px-3 py-3 rounded-lg text-base font-medium hover:bg-orange-50 dark:hover:bg-orange-900/30"
                     >
                       <UserIcon size={20} />
-                      <span className="truncate max-w-[100px]">
+                      <span className="truncate max-w-25">
                         {auth.user?.name?.trim().split(/\s+/)[0]}
                       </span>
                     </button>

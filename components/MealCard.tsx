@@ -19,14 +19,14 @@ const MealCard: React.FC<MealCardProps> = ({ meal, index }) => {
       whileHover={{ y: -5 }}
       className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:shadow-orange-500/5 transition-all"
     >
-      <Link to={`/meal/${meal.idMeal}`} className="block relative overflow-hidden aspect-[4/3]">
+      <Link to={`/meal/${meal.idMeal}`} className="block relative overflow-hidden aspect-4/3">
         <img
           src={meal.strMealThumb}
           alt={meal.strMeal}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
           <span className="text-white text-sm font-medium flex items-center gap-1">
             View Recipe <ArrowRight size={14} />
           </span>

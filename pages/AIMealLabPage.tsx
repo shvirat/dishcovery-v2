@@ -2,9 +2,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Wand2, Download, Share2, Info, Layout, Layers, Box } from 'lucide-react';
+import {useNavigate } from 'react-router-dom';
+import { AuthState } from '../types';
 import { geminiService } from '../services/geminiService';
 
-const AIMealLabPage: React.FC = () => {
+interface AIMealLabPageProps {
+  auth: AuthState;
+  setAuth: (auth: AuthState) => void;
+}
+
+const AIMealLabPage: React.FC<AIMealLabPageProps>  = ({ auth, setAuth }) => {
+  const navigate = useNavigate();
+
   const [prompt, setPrompt] = useState('');
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +21,12 @@ const AIMealLabPage: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
+
+    if (!auth.isAuthenticated) {
+      navigate('/login', { replace: true });
+      return;
+    }
+    
     setIsLoading(true);
     try {
       const img = await geminiService.generateMealImage(prompt, size);
@@ -102,7 +117,7 @@ const AIMealLabPage: React.FC = () => {
           </div>
 
           <div className="bg-slate-100 dark:bg-slate-800/50 p-6 rounded-3xl flex items-start gap-4">
-            <Info className="text-indigo-500 flex-shrink-0" size={20} />
+            <Info className="text-indigo-500 shrink-0" size={20} />
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               Generation usually takes 5-10 seconds. For best results, mention lighting styles like "dramatic", "warm sunlit", or "cinematic".
             </p>
@@ -111,7 +126,7 @@ const AIMealLabPage: React.FC = () => {
 
         {/* Preview Area */}
         <div className="lg:col-span-7 order-1 lg:order-2">
-          <div className="relative aspect-square w-full bg-slate-100 dark:bg-slate-800 rounded-[2rem] border-4 border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center overflow-hidden group shadow-2xl">
+          <div className="relative aspect-square w-full bg-slate-100 dark:bg-slate-800 rounded-4xl border-4 border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center overflow-hidden group shadow-2xl">
             {isLoading ? (
               <div className="text-center space-y-4 px-6">
                 <div className="relative">

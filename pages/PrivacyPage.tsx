@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-white dark:bg-slate-900
-                   rounded-[2rem] p-10
+                   rounded-4xl p-10
                    border border-slate-100 dark:border-slate-800
                    shadow-2xl"
       >

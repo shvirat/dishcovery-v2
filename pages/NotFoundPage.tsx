@@ -8,7 +8,7 @@ const NotFoundPage = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-md w-full bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-2xl text-center space-y-6"
+        className="max-w-md w-full bg-white dark:bg-slate-900 p-8 rounded-4xl border border-slate-100 dark:border-slate-800 shadow-2xl text-center space-y-6"
       >
         <AlertTriangle size={48} className="mx-auto text-orange-500" />
 

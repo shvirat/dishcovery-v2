@@ -5,10 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Heart, ArrowLeft, Youtube, Clock, Users, ChevronRight, 
   Sparkles, Check, Wand2, RefreshCcw, Download, Share2, Utensils,
-  PlayIcon,
-  PlaySquareIcon,
-  YoutubeIcon,
-  LucideYoutube
 } from 'lucide-react';
 import { mealDbService } from '../services/mealDbService';
 import { authService } from '../services/authService';
@@ -217,7 +213,7 @@ const MealDetailsPage: React.FC<MealDetailsPageProps> = ({ auth, setAuth }) => {
           </div>
 
           {/* AI Tools Affordance */}
-          <div className="bg-gradient-to-br from-orange-500 to-pink-600 rounded-3xl p-6 text-white shadow-xl shadow-orange-500/20">
+          <div className="bg-linear-to-br from-orange-500 to-pink-600 rounded-3xl p-6 text-white shadow-xl shadow-orange-500/20">
             <div className="flex items-center gap-3 mb-4">
               <Sparkles size={24} />
               <h3 className="text-xl font-bold">Magic Kitchen</h3>
@@ -323,7 +319,7 @@ const MealDetailsPage: React.FC<MealDetailsPageProps> = ({ auth, setAuth }) => {
               <ul className="space-y-3">
                 {ingredients.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3 group">
-                    <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:border-orange-500 transition-colors">
+                    <div className="mt-1 shrink-0 w-5 h-5 rounded-full border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:border-orange-500 transition-colors">
                       <div className="w-2 h-2 rounded-full bg-orange-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>

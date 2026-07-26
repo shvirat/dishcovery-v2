@@ -86,7 +86,7 @@ export default function UserProfilePage({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-white dark:bg-slate-900
-                   rounded-[2rem] p-8
+                   rounded-4xl p-8
                    border border-slate-100 dark:border-slate-800
                    shadow-2xl"
       >

@@ -8,7 +8,7 @@ export interface Meal {
   strMealThumb: string;
   strTags?: string;
   strYoutube?: string;
-  [key: string]: any; // For ingredients and measures
+  [key: string]: any;
 }
 
 export interface Category {
@@ -21,7 +21,8 @@ export interface Category {
 export interface User {
   id: string;
   email: string;
-  favorites: string[]; // Array of meal IDs
+  name?: string;
+  favorites: string[];
 }
 
 export interface AuthState {

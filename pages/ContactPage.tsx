@@ -88,7 +88,6 @@ export default function ContactPage() {
 
           <div className="pt-6 space-y-5">
             <ContactLink icon={<Mail size={18} />} href="mailto:thegenpixel@gmail.com" label="thegenpixel@gmail.com" />
-            <ContactLink icon={<Phone size={18} />} href="tel:+918292091005" label="+91 82920 91005" />
             <ContactLink
               icon={<MapPin size={18} />}
               href="https://www.google.com/maps/search/?api=1&query=New+Delhi+India"
@@ -112,7 +111,7 @@ export default function ContactPage() {
           transition={{ delay: 0.1 }}
           className="bg-white dark:bg-slate-900
                      border border-slate-100 dark:border-slate-800
-                     rounded-[2rem] p-8
+                     rounded-4xl p-8
                      shadow-2xl space-y-6"
         >
           <FormField label="Your Name" name="name" icon={<User size={18} />} placeholder="Your name" />

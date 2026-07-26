@@ -8,6 +8,7 @@ import { AuthState } from '../types';
 import { Eye, EyeOff } from 'lucide-react';
 
 interface LoginPageProps {
+  auth: AuthState;
   onLogin: (auth: AuthState) => void;
 }
 
@@ -44,7 +45,7 @@ const LoginPage: React.FC<LoginPageProps> = ({auth, onLogin }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-2xl"
+        className="bg-white dark:bg-slate-900 p-8 rounded-4xl border border-slate-100 dark:border-slate-800 shadow-2xl"
       >
         <div className="text-center mb-10">
           <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">Welcome back</h1>
