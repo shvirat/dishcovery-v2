@@ -14,6 +14,7 @@ interface FavoritesPageProps {
 }
 
 const FavoritesPage: React.FC<FavoritesPageProps> = ({ auth, setAuth }) => {
+  console.log("Current auth state:", auth.user);
   const [favorites, setFavorites] = useState<Meal[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -24,22 +25,52 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({ auth, setAuth }) => {
       return;
     }
 
-    const fetchFavorites = async () => {
+    const loadFavoritesData = async () => {
       setIsLoading(true);
       try {
-        const mealIds = auth.user?.favorites || [];
-        const mealPromises = mealIds.map(id => mealDbService.getMealDetails(id));
+        // 1. Check if favorites is missing (needs /me fetch)
+        if (auth.user?.favorites === undefined) {
+          const newAuthState = await authService.getMe(); 
+          
+          if (newAuthState) {
+             setAuth(newAuthState);
+          } else {
+             navigate('/login');
+          }
+          return;
+        }
+
+        // 2. We now definitely have the favorites array
+        const mealIds = auth.user.favorites;
+
+        if (mealIds.length === 0) {
+          setFavorites([]);
+          setIsLoading(false);
+          return;
+        }
+
+        // 3. Fetch meals (safely handling objects or strings)
+        const mealPromises = mealIds.map(item => {
+          const actualId = typeof item === 'object' ? (item as any).mealId || (item as any)._id : item;
+          return mealDbService.getMealDetails(actualId);
+        });
+
         const results = await Promise.all(mealPromises);
         setFavorites(results.filter((m): m is Meal => m !== null));
+
       } catch (err) {
-        console.error(err);
+        console.error("Failed to load favorites data:", err);
+        setIsLoading(false); 
       } finally {
-        setIsLoading(false);
+        if (auth.user?.favorites !== undefined) {
+          setIsLoading(false);
+        }
       }
     };
 
-    fetchFavorites();
-  }, [auth, navigate]);
+    loadFavoritesData();
+    
+  }, [auth.isAuthenticated, auth.user?.favorites?.join(','), navigate, setAuth]);
 
   const removeFavorite = async (mealId: string) => {
     try {
